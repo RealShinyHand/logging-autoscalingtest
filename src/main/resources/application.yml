@@ -1,0 +1,39 @@
+mybatis:
+  type-aliases-package: com.skj.logginautoscalingtest.dto
+  mapper-locations: classpath:mybatis/mapper/*.xml
+spring:
+  profiles:
+    active:
+      - default
+---
+spring:
+  config:
+    activate:
+      on-profile:
+        - default
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/practice
+    username: root
+    password: sgjskj
+---
+spring:
+  sql:
+    init:
+      schema-locations:
+        - classpath:mybatis/schema.sql
+      data-locations:
+        - classpath:mybatis/data.sql
+  config:
+    activate:
+      on-profile:
+        - test
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MySQL;
+    username: SA
+    password:
+    initialization-mode: always

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skj.logginautoscalingtest.mapper.MemoMapper">
+    <select id="selectOne" resultType="Memo">
+        select * from tb_memo where id = #{id}
+    </select>
+
+    <select id="selectByWriterIP" resultType="Memo">
+        select * from tb_memo where writerIP = #{writerIP}
+    </select>
+
+    <select id="selectByServerIP" resultType="Memo">
+        select * from tb_memo where serverIP = #{serverIP}
+    </select>
+
+    <select id="selectPaging" resultType="Memo" parameterType="PageDto">
+        select * from tb_memo limit #{start},#{pageDto.size}
+    </select>
+
+    <insert id="insertOne" parameterType="memo">
+        insert into tb_memo(memo,writerIP,serverIP) values(memo,writerIP,serverIP);
+    </insert>
+
+</mapper>
+
+
+<!--
+    Memo selectOne(String id);
+    List<Memo> selectByWriterIP(String writerIP);
+    List<Memo> selectByServerIP(String serverIP);
+    List<Memo> selectPaging(PageDto pageDto);
+    int insertOne(Memo memo);
+-->
