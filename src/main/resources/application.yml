@@ -1,5 +1,5 @@
 mybatis:
-  type-aliases-package: com.skj.logginautoscalingtest.dto
+  type-aliases-package: com.skj.logginautoscalingtest.domain
   mapper-locations: classpath:mybatis/mapper/*.xml
 spring:
   profiles:

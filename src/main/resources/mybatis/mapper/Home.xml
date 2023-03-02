@@ -17,12 +17,17 @@
     </select>
 
     <select id="selectPaging" resultType="Memo" parameterType="PageDto">
-        select * from tb_memo limit #{start},#{pageDto.size}
+        select * from tb_memo limit #{start},#{size}
     </select>
 
-    <insert id="insertOne" parameterType="memo">
-        insert into tb_memo(memo,writerIP,serverIP) values(memo,writerIP,serverIP);
+    <select id="count" resultType="Long" >
+        select count(*) from tb_memo;
+    </select>
+
+    <insert id="insertOne" parameterType="Memo">
+        insert into tb_memo(memo,writerIP,serverIP) values(#{memo},#{writerIP},#{serverIP});
     </insert>
+
 
 </mapper>
 

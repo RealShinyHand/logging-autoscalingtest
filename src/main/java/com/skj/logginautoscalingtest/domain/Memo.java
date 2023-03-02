@@ -1,5 +1,8 @@
-package com.skj.logginautoscalingtest.dto;
+package com.skj.logginautoscalingtest.domain;
 
+import lombok.Getter;
+
+@Getter
 public class Memo {
     private long id;
     private String memo;

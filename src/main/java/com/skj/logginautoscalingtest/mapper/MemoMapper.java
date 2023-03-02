@@ -1,7 +1,7 @@
 package com.skj.logginautoscalingtest.mapper;
 
-import com.skj.logginautoscalingtest.dto.Memo;
-import com.skj.logginautoscalingtest.dto.PageDto;
+import com.skj.logginautoscalingtest.domain.Memo;
+import com.skj.logginautoscalingtest.domain.PageDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,4 +15,5 @@ public interface MemoMapper {
     List<Memo> selectByServerIP(String serverIP);
     List<Memo> selectPaging(PageDto pageDto);
     int insertOne(Memo memo);
+    Long count();
 }
