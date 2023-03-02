@@ -35,13 +35,13 @@ public class HomeController {
     }
 
     @GetMapping("/serverIp/memos")
-    public List<Memo> getSpecialMemos(@RequestParam(required = false) String serverIp,@RequestParam(required = false) String writerIP)
+    public List<Memo> getServerIPMemos(@RequestParam(required = false) String serverIp,@RequestParam(required = false) String writerIP)
     {
         return homeService.selectByServerIP();
     }
 
     @GetMapping("/writerIp/memos")
-    public List<Memo> getSpecialMemos(@RequestParam(required = true) String writerIP)
+    public List<Memo> getWriterIPMemos(@RequestParam(required = true) String writerIP)
     {
         return homeService.selectByWriterIP(writerIP);
     }
