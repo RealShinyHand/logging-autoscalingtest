@@ -13,7 +13,7 @@ spring:
         - default
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/practice
+    url: jdbc:mysql://${DATA_SOURCE_URL-"localhost"}:3306/practice
     username: root
     password: sgjskj
 ---
