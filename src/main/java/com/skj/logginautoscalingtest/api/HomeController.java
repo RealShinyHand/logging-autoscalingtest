@@ -5,9 +5,7 @@ import com.skj.logginautoscalingtest.domain.PageInfo;
 import com.skj.logginautoscalingtest.service.HomeService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -25,6 +23,20 @@ public class HomeController {
     @GetMapping("")
     public String test(){
         return "server ok";
+    }
+
+    @GetMapping("/a")
+    public ResponseEntity<String> test3(){
+        return
+                ResponseEntity.<String>of(java.util.Optional.of("server ok"));
+    }
+
+    @GetMapping("/test")
+    public HashMap<String, String> test2(){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("qwe","1234");
+        map.put("aaa","bbb");
+        return map;
     }
 
     @GetMapping("/memos")

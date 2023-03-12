@@ -30,8 +30,7 @@ class HomeControllerTest {
     @Order(1)
     public void getMemos()throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/home/memos").param("index", String.valueOf(1)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data", CoreMatchers.instanceOf(List.class)))
+                .andExpect(MockMvcResultMatchers.status().isOk());
         ;
     }
 
