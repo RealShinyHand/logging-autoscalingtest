@@ -9,13 +9,13 @@
 
     <!-- Logstash -->
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender" >
-        <destination>${LOG_STASH_IP:-3.39.110.142:5044}</destination>
+        <destination>${LOG_STASH_IP:-3.35.44.207:5041}</destination>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <pattern>this is logstash : %d{HH:mm:ss.SSS} [%thread] %-5level %logger{10} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="LOGSTASH" />
     </root>

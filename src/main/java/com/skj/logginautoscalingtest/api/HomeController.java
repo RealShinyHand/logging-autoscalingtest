@@ -3,6 +3,7 @@ package com.skj.logginautoscalingtest.api;
 import com.skj.logginautoscalingtest.domain.Memo;
 import com.skj.logginautoscalingtest.domain.PageInfo;
 import com.skj.logginautoscalingtest.service.HomeService;
+import com.skj.logginautoscalingtest.service.IPUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,17 +20,20 @@ public class HomeController {
 
     private final HomeService homeService;
 
+    private final IPUtil ipUtil;
 
     @GetMapping("")
-    public String test(){
-        return "server ok";
+    public Map<String,Object> test(HttpServletRequest req){
+        Map<String,Object> map = new HashMap<>();
+        map.put("message","server ok");
+        map.put("serverIp",ipUtil.getServerIP());
+        map.put("clientIp",ipUtil.getClientIP(req));
+
+        return map;
     }
 
-    @GetMapping("/a")
-    public ResponseEntity<String> test3(){
-        return
-                ResponseEntity.<String>of(java.util.Optional.of("server ok"));
-    }
+
+
 
     @GetMapping("/test")
     public HashMap<String, String> test2(){
@@ -72,7 +76,7 @@ public class HomeController {
 
     @PostMapping("/memos")
     public Map<String,Object> insetMemo( @RequestBody Memo memo, HttpServletRequest req){
-        memo.setWriterIP(req.getRequestedSessionId());
+        memo.setWriterIP(req.getRemoteAddr());
         int result =homeService.insertOne(memo);
         Map<String,Object> map = new HashMap<>();
 
